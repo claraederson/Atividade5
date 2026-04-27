@@ -164,7 +164,7 @@ Clara Henz (<a href="mailto:clarahenz@id.uff.br" class="email">clarahenz@id.uff.
 <p><br></p>
 <h3 id="anova-clássica">1.1. ANOVA clássica</h3>
 <p><br></p>
-<p>A ANOVA testa se existe diferença ou não entre as <strong>médias populacionais</strong> de <strong>três ou mais grupos</strong>, assumindo que as <strong>variâncias</strong> são <strong>iguais</strong>.</p>
+<p>A ANOVA testa se as <strong>médias</strong> de <strong>três ou mais grupos</strong> são <strong>iguais</strong>, assumindo <strong>variâncias iguais</strong> entre os grupos.</p>
 <p><br> <br></p>
 <p>Hipóteses:</p>
 <p><br></p>
@@ -177,7 +177,7 @@ H_1:\; \text{pelo menos a média de um grupo é diferente}
 </section>
 <section class="slide level2">
 
-<h3 id="estatística-de-teste-da-anova">1.2. Estatística de teste da ANOVA</h3>
+<p>Estatística de Teste:</p>
 <p><br> <br></p>
 <p><span class="math display">\[
 \Large
@@ -195,20 +195,7 @@ QM_{dentro}=\frac{SQ_{dentro}}{N-k}
 </section>
 <section class="slide level2">
 
-<h3 id="teste-de-tukey">1.3. Teste de Tukey</h3>
-<p><br></p>
-<p>O teste de Tukey é utilizado para verificar quais são os grupos que possuem as médias diferentes comparando pares de médias.</p>
-<p><br> <br> <br></p>
-<p><span class="math display">\[
-\Large
-q=\frac{|\bar{x}_i-\bar{x}_j|}
-{\sqrt{\frac{QM_{dentro}}{2}\left(\frac{1}{n_i}+\frac{1}{n_j}\right)}}
-\]</span> <br> <br></p>
-<p>Baseado na distribuição studentizada (q).</p>
-</section>
-<section class="slide level2">
-
-<p><strong>Suposições principais:</strong></p>
+<p>Pressupostos da ANOVA clássica:</p>
 <ul>
 <li>Normalidade dos resíduos<br>
 </li>
@@ -217,26 +204,40 @@ q=\frac{|\bar{x}_i-\bar{x}_j|}
 <li>Homocedasticidade <span class="math inline">\(\text{(}\sigma_1^2=\sigma_2^2=\cdots=\sigma_k^2\text{)}\)</span></li>
 </ul>
 <p><br></p>
-<p><strong>Problema da heterogeneidade:</strong></p>
-<p>Quando a suposição da homocedasticidade é violada:</p>
+<p>Se a suposição da <strong>homocedasticidade</strong> é violada:</p>
 <ul>
 <li>O <span class="math inline">\(QM_{dentro}\)</span> deixa de ser uma boa estimativa</li>
-<li>A estatística <span class="math inline">\(F\)</span> pode ficar enviesada</li>
+<li>A estatística <span class="math inline">\(F\)</span> pode ficar <strong>distorcida</strong></li>
 <li>Aumenta o risco de <strong>erro tipo I</strong></li>
 </ul>
-<p>Nesses casos, o mais indicado é utilizar a <strong>ANOVA de Welch</strong>.</p>
-</section>
-<section id="a-anova-de-welch" class="slide level2">
-<h2><strong>2. A ANOVA de Welch</strong></h2>
 <p><br></p>
+<p>Se os pressupostos <strong>não são violados</strong> e a ANOVA é <strong>significativa</strong>, aplica-se o <strong>teste de Tukey</strong>.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="teste-de-tukey">1.2. Teste de Tukey</h3>
+<p><br> <br></p>
+<p>Pós-teste usado para <strong>comparações par a par</strong> entre médias, assumindo <strong>variâncias iguais</strong>.</p>
+<p><br> <br></p>
+<p>Estatística de Teste:</p>
+<p><br> <br></p>
+<p><span class="math display">\[
+\Large
+q_{ij} =
+\frac{|\bar{x}_i - \bar{x}_j|}
+{\sqrt{\frac{QM_{dentro}}{n}}} \sim q_{\alpha, k, N-k}
+\]</span></p>
+</section>
+<section id="a-anova-de-welch" class="slide level2 scrollable">
+<h2><strong>2. A ANOVA de Welch</strong></h2>
 <ul>
-<li><p>Utilizada quando as variâncias são diferentes e n diferentes</p></li>
-<li><p>Usa pesos baseados nas variâncias dos grupos</p></li>
-<li><p>Grupos com maior variância recebem menor peso</p></li>
-<li><p>Reduz o impacto de variâncias desiguais</p></li>
+<li><p><strong>Não</strong> assume variâncias iguais</p></li>
+<li><p>Permite <strong>tamanhos</strong> de amostras <strong>diferentes</strong></p></li>
+<li><p>Utiliza <strong>pesos</strong> baseados nas <strong>variâncias</strong> dos grupos</p></li>
+<li><p>Mais <strong>robusta</strong> à heterocedasticidade</p></li>
 </ul>
 <p><br></p>
-<p>Média Ponderada:</p>
+<p>Média ponderada:</p>
 <p><br></p>
 <p><span class="math display">\[
 \large
@@ -248,11 +249,9 @@ q=\frac{|\bar{x}_i-\bar{x}_j|}
 <p><span class="math display">\[
 w_i=\frac{n_i}{s_i^2}
 \]</span></p>
-</section>
-<section class="slide level2">
-
-<h3 id="estatística-de-teste">2.1. Estatística de Teste</h3>
-<p><br> <br></p>
+<p><br></p>
+<p>Estatística de Teste:</p>
+<p><br></p>
 <p><span class="math display">\[
 \large
 F_W=
@@ -263,59 +262,26 @@ F_W=
 \sum_{i=1}^{k}
 \frac{1}{n_i-1}
 \left(1-\frac{w_i}{\sum w_i}\right)^2
-}
-\]</span></p>
-<p><br> <br></p>
-<p>Os graus de liberdade são corrigidos usando a aproximação de Welch-Satterthwaite:</p>
-<p><br></p>
-<p><span class="math display">\[
-\nu=
-\frac{k^2-1}
-{3\sum_{i=1}^{k}
-\frac{1}{n_i-1}
-\left(1-\frac{w_i}{\sum w_i}\right)^2}
+}\sim F_{\nu_1, \nu_2}
 \]</span></p>
 </section>
 <section id="o-teste-de-games-howell" class="slide level2">
 <h2><strong>3. O teste de Games-Howell</strong></h2>
 <p><br></p>
-<p>O teste de Games–Howell realiza comparações par a par utilizando a variância específica de cada grupo.</p>
-<p><br></p>
-<ul>
-<li><p>Não assume variâncias iguais</p></li>
-<li><p>Não exige tamanhos iguais</p></li>
-<li><p>Ajusta os graus de liberdade</p></li>
-<li><p>Controla melhor o erro do tipo I</p></li>
-</ul>
-<p><br></p>
-</section>
-<section class="slide level2">
-
-<h3 id="estatística-de-teste-1">3.1. Estatística de Teste:</h3>
-<p><br></p>
+<p>Pós-teste para <strong>comparações par a par</strong> utilizando a <strong>variância específica</strong> de cada grupo, uma vez que a <strong>ANOVA de Welch</strong> é <strong>significativa</strong>.</p>
+<p><br> <br></p>
+<p>Estatística de Teste:</p>
+<p><br> <br></p>
 <p><span class="math display">\[
 \large
 q_{ij}=
 \frac{|\bar{x}_i-\bar{x}_j|}
-{\sqrt{\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}}}
-\]</span></p>
-<p><br> <br></p>
-<p>Graus de liberdade:</p>
-<p><br></p>
-<p><span class="math display">\[
-\nu=
-\frac{
-\left(\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}\right)^2
-}{
-\frac{\left(\frac{s_i^2}{n_i}\right)^2}{n_i-1}
-+
-\frac{\left(\frac{s_j^2}{n_j}\right)^2}{n_j-1}
-}
-\]</span></p>
+{\sqrt{\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}}}\sim q_{\alpha, k, \nu}
+\]</span> <br></p>
 </section>
 <section class="slide level2">
 
-<h3 id="resumo-comparativo"><strong>Resumo Comparativo</strong></h3>
+<h3 id="resumo-comparativo-anova-clássica-x-anova-de-welch">Resumo Comparativo: <strong>ANOVA clássica</strong> x <strong>ANOVA de Welch</strong></h3>
 <p><br> <br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -325,15 +291,14 @@ q_{ij}=
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>ANOVA Clássica</strong></p>
+<p><strong>ANOVA clássica</strong></p>
 </div>
 <div class="callout-content">
 <ul>
-<li>Variâncias iguais<br>
-</li>
-<li>Teste de Tukey<br>
-</li>
-<li>Menos robusta</li>
+<li>Variâncias <strong>iguais</strong></li>
+<li>Tamanhos <strong>iguais</strong> das <strong>amostras</strong></li>
+<li>Pós-teste: <strong>Tukey</strong></li>
+<li><strong>Menos</strong> robusta</li>
 </ul>
 </div>
 </div>
@@ -349,11 +314,11 @@ q_{ij}=
 </div>
 <div class="callout-content">
 <ul>
-<li>Variâncias diferentes<br>
+<li>Variâncias <strong>diferentes</strong></li>
+<li>Tamanhos <strong>diferentes</strong> das <strong>amostras</strong></li>
+<li>Pós-teste: <strong>Games-Howell</strong><br>
 </li>
-<li>Teste de Games-Howell<br>
-</li>
-<li>Mais robusta<br>
+<li><strong>Mais</strong> robusta<br>
 </li>
 </ul>
 </div>
@@ -364,13 +329,15 @@ q_{ij}=
 <section id="referências" class="slide level2">
 <h2><strong>4. Referências</strong></h2>
 <p><br> <br></p>
+<p><strong>Montgomery, D. C. (2019).</strong><br>
+Design and Analysis of Experiments. Wiley.</p>
+<p><br> <br></p>
 <p><strong>Welch, B. L. (1951).</strong><br>
 On the comparison of several mean values. <em>Biometrika</em>, 38(3/4), 330–336.</p>
 <p><br> <br></p>
-<p><strong>Games, P. A., &amp; Howell, J. F. (1976).</strong></p>
-<p><br> <br></p>
-<p><strong>Montgomery, D. C. (2019).</strong><br>
-Design and Analysis of Experiments. Wiley.</p>
+<p><strong>Games, P. A., &amp; Howell, J. F. (1976).</strong><br>
+Pairwise multiple comparison procedures with unequal n’s and variances.<br>
+<em>Journal of Educational Statistics</em>, 1(2), 113–125.</p>
 </section>
 <section id="fim" class="title-slide slide level1 center" data-background-image="Capa.png" style="text-align:center">
 <h1><strong>FIM</strong></h1>
