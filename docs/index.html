@@ -147,130 +147,218 @@ Clara Henz (<a href="mailto:clarahenz@id.uff.br" class="email">clarahenz@id.uff.
 <section id="sumário" class="slide level2">
 <h2><strong>SUMÁRIO</strong></h2>
 <div class="box-blue">
-<p><strong>1.</strong> Introdução</p>
+<p><strong>1.</strong> Contexto</p>
 </div>
 <div class="box-green">
-<p><strong>2.</strong> Metodologia Estatística</p>
+<p><strong>2.</strong> A ANOVA de Welch</p>
 </div>
 <div class="box-purple">
-<p><strong>3.</strong> Resultados</p>
+<p><strong>3.</strong> O teste de Games-Howell</p>
 </div>
 <div class="box-orange">
-<p><strong>4.</strong> Conclusão</p>
+<p><strong>4.</strong> Referências</p>
 </div>
 </section>
-<section id="introdução" class="slide level2">
-<h2><strong>1. Introdução</strong></h2>
+<section id="contexto" class="slide level2">
+<h2><strong>1. Contexto</strong></h2>
 <p><br></p>
-<ul>
-<li><p><strong>Título</strong>: Análise da ansiedade de alunos, técnicos e professores de um campus de uma universidade federal do sul do país;</p></li>
-<li><p><strong>Autores</strong>: Paula Gulart Munhoz, Gustavo da Rosa Borges;</p></li>
-<li><p><strong>Motivação</strong>: A ansiedade é crescente e frequente no ambiente universitário, tornando essencial compreender seus fatores associados;</p></li>
-<li><p><strong>Objetivo</strong>: Analisar o nível de ansiedade de alunos, técnicos e professores e relacionar ansiedade com idade, sexo e tempo de atuação;</p></li>
-<li><p><strong>Coleta da Amostra</strong>: Os dados foram coletados através de um questionário realizado com 365 participantes, sendo eles alunos, técnicos e docentes da faculdade.</p></li>
-</ul>
-</section>
-<section id="metodologia-estatística" class="slide level2">
-<h2><strong>2. Metodologia Estatística</strong></h2>
+<h3 id="anova-clássica">1.1. ANOVA clássica</h3>
 <p><br></p>
-<ul>
-<li><strong>Variável Dependente</strong>: Nível de ansiedade</li>
-</ul>
-<p><br></p>
-<ul>
-<li><strong>Variáveis Independentes</strong>: Idade; Sexo; Tempo de atuação; Categoria (aluno, técnico, professor)</li>
-</ul>
-<p><br></p>
-<ul>
-<li><p><strong>Testes Utilizados</strong>:</p>
-<ul>
-<li><p>Teste t: comparação de médias de ansiedade entre 2 grupos</p></li>
-<li><p>ANOVA: comparação de médias de ansiedade entre 3 ou mais grupos</p></li>
-</ul>
-<p>Os resultados foram apresentados por meio de testes de hipótese, identificando diferenças estatisticamente significativas entre os grupos.</p></li>
-</ul>
-</section>
-<section id="resultados" class="slide level2 scrollable">
-<h2><strong>3. Resultados</strong></h2>
-<p><br></p>
-<ul>
-<li><p><strong>Diferença entre Ansiedade de Alunos, Técnicos e Docentes:</strong></p>
-<p>Hipótese: Alunos possuem maior nível de ansiedade que técnicos e professores.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="tabela4.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-<ul>
-<li>Diferença significativa entre os grupos (p &lt; 0,05);</li>
-<li><strong>Alunos</strong> apresentam maior ansiedade.</li>
-</ul></li>
-</ul>
-<p><br></p>
-<ul>
-<li><p><strong>Diferença entre Semestre e Nível de Ansiedade:</strong></p>
-<p>Hipótese: Alunos que estão na metade do curso possuem maior nível de ansiedade do que os ingressantes e concluintes.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="tabela8.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-<ul>
-<li>Não há diferença estatisticamente significativa (p &gt; 0,05).</li>
-</ul></li>
-</ul>
-<p><br></p>
-<ul>
-<li><p><strong>Diferença entre Tempo de Atividade e Nível de Ansiedade:</strong></p>
+<p>A ANOVA clássica testa se existe diferença ou não entre as <strong>médias populacionais</strong> de <strong>três ou mais grupos</strong>, assumindo que as <strong>variâncias</strong> são <strong>iguais</strong>.</p>
+<p><br> <br> <br></p>
 <p>Hipóteses:</p>
+<p><br> <br></p>
+<p><span class="math display">\[
+\large
+\begin{cases}
+H_0:\; \mu_1 = \mu_2 = \cdots = \mu_k \\
+H_1:\; \text{pelo menos a média de um grupo é diferente}
+\end{cases}
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="estatística-de-teste-da-anova">1.2. Estatística de teste da ANOVA</h3>
+<p><br> <br> <br></p>
+<p><span class="math display">\[
+\LARGE
+F=\frac{QM_{entre}}{QM_{dentro}}
+\]</span></p>
+<p><br> <br> <br></p>
+<p>onde:</p>
+<p><br> <br></p>
+<p><span class="math display">\[
+\large
+QM_{entre}=\frac{SQ_{entre}}{k-1}
+\quad \quad \text{e} \quad \quad
+QM_{dentro}=\frac{SQ_{dentro}}{N-k}
+\]</span> ? será que aqui não vale colocar a RC, F~1,n-2… ?</p>
+</section>
+<section class="slide level2">
+
+<h3 id="teste-de-tukey">1.3. Teste de Tukey</h3>
+<p><br></p>
+<p>O teste de Tukey é utilizado para verificar quais são os grupos que possuem as médias diferentes comparando pares de médias.</p>
+<p><br> <br> <br></p>
+<p><span class="math display">\[
+\LARGE
+q=\frac{|\bar{x}_i-\bar{x}_j|}
+{\sqrt{\frac{QM_{dentro}}{2}\left(\frac{1}{n_i}+\frac{1}{n_j}\right)}}
+\]</span> <br> <br> <br> <br></p>
+<p>Baseado na distribuição studentizada (q).</p>
+</section>
+<section class="slide level2">
+
+<p><strong>Suposições principais:</strong></p>
 <ul>
-<li>Técnicos ingressantes possuem maior nível de ansiedade.</li>
-<li>Professores ingressantes possuem maior núvel de ansiedade.</li>
+<li>Normalidade dos resíduos<br>
+</li>
+<li>Independência das observações<br>
+</li>
+<li>Homocedasticidade (<span class="math inline">\(\sigma_1^2=\sigma_2^2=\cdots=\sigma_k^2\)</span>)</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="tabela9.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
+<p><br></p>
+<p><strong>Problema da heterogeneidade:</strong></p>
+<p>Quando a suposição da homocedasticidade é violada:</p>
 <ul>
-<li>Não há diferença estatisticamente significativa (p &gt; 0,05).</li>
-</ul></li>
+<li>O <span class="math inline">\(QM_{dentro}\)</span> deixa de ser uma boa estimativa</li>
+<li>A estatística <span class="math inline">\(F\)</span> pode ficar enviesada</li>
+<li>Aumenta o risco de <strong>erro tipo I</strong></li>
+</ul>
+<p>Nesses casos, o mais indicado é utilizar a <strong>ANOVA de Welch</strong>.</p>
+</section>
+<section id="a-anova-de-welch" class="slide level2">
+<h2><strong>2. A ANOVA de Welch</strong></h2>
+<p>A ANOVA de Welch é uma versão robusta da ANOVA clássica, desenvolvida para lidar com heterocedasticidade.</p>
+<h3 id="ideia-central">Ideia central</h3>
+<p>Em vez de assumir variância igual entre grupos, o método atribui <strong>pesos diferentes</strong>, reduzindo a influência de grupos mais instáveis.</p>
+<p>! colocar mais explicado sobre a diferença das variâncias e diferenças dos n !</p>
+<h3 id="peso-de-cada-grupo">Peso de cada grupo:</h3>
+<p><span class="math display">\[
+w_i=\frac{n_i}{s_i^2}
+\]</span></p>
+<p>➡ grupos mais variáveis recebem menor peso.</p>
+<h3 id="média-ponderada">Média ponderada:</h3>
+<p><span class="math display">\[
+\bar{x}_w=
+\frac{\sum_{i=1}^{k} w_i \bar{x}_i}
+{\sum_{i=1}^{k} w_i}
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="estatística-de-welch">Estatística de Welch:</h3>
+<p>A estatística ajusta a variabilidade entre grupos considerando os pesos:</p>
+<p><span class="math display">\[
+F_W=
+\frac{
+\sum_{i=1}^{k} w_i(\bar{x}_i-\bar{x}_w)^2/(k-1)
+}{
+1+\frac{2(k-2)}{k^2-1}
+\sum_{i=1}^{k}
+\frac{1}{n_i-1}
+\left(1-\frac{w_i}{\sum w_i}\right)^2
+}
+\]</span></p>
+<h3 id="graus-de-liberdade-ajustados">Graus de liberdade ajustados:</h3>
+<p><span class="math display">\[
+\nu=
+\frac{k^2-1}
+{3\sum_{i=1}^{k}
+\frac{1}{n_i-1}
+\left(1-\frac{w_i}{\sum w_i}\right)^2}
+\]</span></p>
+<h3 id="interpretação">Interpretação:</h3>
+<p>A principal mudança é que:</p>
+<ul>
+<li>grupos mais estáveis influenciam mais o resultado<br>
+</li>
+<li>grupos instáveis têm impacto reduzido<br>
+</li>
+<li>o teste se torna robusto à heterocedasticidade</li>
+</ul>
+<p>! melhorar isso !</p>
+</section>
+<section id="o-teste-de-games-howell" class="slide level2 scrollable">
+<h2><strong>3. O teste de Games-Howell</strong></h2>
+<p>O teste de Games–Howell é uma alternativa ao Tukey quando a suposição de variâncias iguais não é válida.</p>
+<h3 id="ideia-do-método">Ideia do método</h3>
+<p>Ele realiza comparações par a par utilizando a variância específica de cada grupo, ao invés de uma variância comum.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="estatística">Estatística:</h3>
+<p><span class="math display">\[
+q_{ij}=
+\frac{|\bar{x}_i-\bar{x}_j|}
+{\sqrt{\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}}}
+\]</span></p>
+<h3 id="graus-de-liberdade">Graus de liberdade:</h3>
+<p><span class="math display">\[
+\nu=
+\frac{
+\left(\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}\right)^2
+}{
+\frac{\left(\frac{s_i^2}{n_i}\right)^2}{n_i-1}
++
+\frac{\left(\frac{s_j^2}{n_j}\right)^2}{n_j-1}
+}
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="comparação-com-tukey">Comparação com Tukey:</h3>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Tukey</th>
+<th>Games–Howell</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>variâncias iguais</td>
+<td>variâncias diferentes</td>
+</tr>
+<tr class="even">
+<td>amostras balanceadas</td>
+<td>amostras desbalanceadas</td>
+</tr>
+<tr class="odd">
+<td>menos robusto</td>
+<td>mais robusto</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vantagem-principal">Vantagem principal:</h3>
+<p>O método não exige:</p>
+<p><span class="math display">\[
+\sigma_i^2=\sigma_j^2
+\]</span></p>
+<p>! acho legal criar uma tabela comparativa, talvez até em um novo capítulo antes de Referências !</p>
+</section>
+<section id="referências" class="slide level2">
+<h2><strong>4. Referências</strong></h2>
+<ul>
+<li><strong>Welch, B. L. (1951).</strong><br>
+On the comparison of several mean values. <em>Biometrika</em>, 38(3/4), 330–336.<br>
+→ Desenvolvido para permitir comparação de médias quando a suposição de variâncias iguais não é válida, tornando a ANOVA mais robusta em situações reais.</li>
 </ul>
 <p><br></p>
 <ul>
-<li><p><strong>Diferença entre Sexo e Nível de Ansiedade:</strong></p>
-<p>Hipóteses:</p>
-<ul>
-<li><p>Alunas possuem maior nível de ansiedade que alunos.</p></li>
-<li><p>Técnicas possuem maior nível de ansiedade que técnicos.</p></li>
-<li><p>Professoras possuem maior nível de ansiedade que professores.</p></li>
+<li><strong>Games, P. A., &amp; Howell, J. F. (1976).</strong><br>
+Pairwise multiple comparison procedures with unequal n’s and variances.<br>
+<em>Journal of Educational Statistics</em>, 1(2), 113–125.<br>
+→ Criado para corrigir limitações do teste de Tukey em cenários com variâncias desiguais e amostras desbalanceadas.</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="tabela10.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
+<p><br></p>
 <ul>
-<li>A diferença por sexo aparece apenas nos <strong>alunos</strong> e, dentre eles, as <strong>mulheres</strong> apresentam maior ansiedade.</li>
-</ul></li>
+<li><strong>Montgomery, D. C. (2019).</strong><br>
+Design and Analysis of Experiments. Wiley.<br>
+→ Livro base da ANOVA clássica, estruturando a decomposição da variabilidade e os fundamentos da análise de experimentos.</li>
 </ul>
 </section>
-<section id="conclusão" class="slide level2">
-<h2><strong>4. Conclusão</strong></h2>
-<p><br></p>
-<ul>
-<li>Os <strong>alunos</strong>, especialmente os mais <strong>jovens</strong> e as <strong>mulheres</strong>, apresentam maior <strong>ansiedade</strong>, impactando negativamente o desempenho e o bem-estar;</li>
-</ul>
-<p><br></p>
-<ul>
-<li>Os testes de hipótese permitem comparar grupos de forma confiável, validar relações entre variáveis e evitar conclusões baseadas apenas em opinião;</li>
-</ul>
-<p><br></p>
-<ul>
-<li>A pesquisa destaca a importância da saúde mental nas universidades, incentivando ações preventivas e políticas de apoio, com impacto no desempenho e na qualidade de vida.</li>
-</ul>
-</section>
-<section id="fim" class="title-slide slide level1 center" data-background-image="ansiedade.jpeg" style="text-align:center">
+<section id="fim" class="title-slide slide level1 center" data-background-image="Capa.png" style="text-align:center">
 <h1><strong>FIM</strong></h1>
 
 </section>
