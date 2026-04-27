@@ -142,7 +142,7 @@ Clara Henz (<a href="mailto:clarahenz@id.uff.br" class="email">clarahenz@id.uff.
     </div>
 </div>
 
-  <p class="date">26/04/2026</p>
+  <p class="date">27/04/2026</p>
 </section>
 <section id="sumário" class="slide level2">
 <h2><strong>SUMÁRIO</strong></h2>
@@ -164,12 +164,11 @@ Clara Henz (<a href="mailto:clarahenz@id.uff.br" class="email">clarahenz@id.uff.
 <p><br></p>
 <h3 id="anova-clássica">1.1. ANOVA clássica</h3>
 <p><br></p>
-<p>A ANOVA clássica testa se existe diferença ou não entre as <strong>médias populacionais</strong> de <strong>três ou mais grupos</strong>, assumindo que as <strong>variâncias</strong> são <strong>iguais</strong>.</p>
-<p><br> <br> <br></p>
-<p>Hipóteses:</p>
+<p>A ANOVA testa se existe diferença ou não entre as <strong>médias populacionais</strong> de <strong>três ou mais grupos</strong>, assumindo que as <strong>variâncias</strong> são <strong>iguais</strong>.</p>
 <p><br> <br></p>
+<p>Hipóteses:</p>
+<p><br></p>
 <p><span class="math display">\[
-\large
 \begin{cases}
 H_0:\; \mu_1 = \mu_2 = \cdots = \mu_k \\
 H_1:\; \text{pelo menos a média de um grupo é diferente}
@@ -179,20 +178,20 @@ H_1:\; \text{pelo menos a média de um grupo é diferente}
 <section class="slide level2">
 
 <h3 id="estatística-de-teste-da-anova">1.2. Estatística de teste da ANOVA</h3>
-<p><br> <br> <br></p>
+<p><br> <br></p>
 <p><span class="math display">\[
-\LARGE
-F=\frac{QM_{entre}}{QM_{dentro}}
+\Large
+F=\frac{QM_{entre}}{QM_{dentro}} \sim F_{k-1,\, N-k}
 \]</span></p>
-<p><br> <br> <br></p>
+<p><br> <br></p>
 <p>onde:</p>
 <p><br> <br></p>
 <p><span class="math display">\[
 \large
 QM_{entre}=\frac{SQ_{entre}}{k-1}
-\quad \quad \text{e} \quad \quad
+\quad \quad \quad \quad \text{e} \quad \quad \quad \quad
 QM_{dentro}=\frac{SQ_{dentro}}{N-k}
-\]</span> ? será que aqui não vale colocar a RC, F~1,n-2… ?</p>
+\]</span></p>
 </section>
 <section class="slide level2">
 
@@ -201,10 +200,10 @@ QM_{dentro}=\frac{SQ_{dentro}}{N-k}
 <p>O teste de Tukey é utilizado para verificar quais são os grupos que possuem as médias diferentes comparando pares de médias.</p>
 <p><br> <br> <br></p>
 <p><span class="math display">\[
-\LARGE
+\Large
 q=\frac{|\bar{x}_i-\bar{x}_j|}
 {\sqrt{\frac{QM_{dentro}}{2}\left(\frac{1}{n_i}+\frac{1}{n_j}\right)}}
-\]</span> <br> <br> <br> <br></p>
+\]</span> <br> <br></p>
 <p>Baseado na distribuição studentizada (q).</p>
 </section>
 <section class="slide level2">
@@ -215,7 +214,7 @@ q=\frac{|\bar{x}_i-\bar{x}_j|}
 </li>
 <li>Independência das observações<br>
 </li>
-<li>Homocedasticidade (<span class="math inline">\(\sigma_1^2=\sigma_2^2=\cdots=\sigma_k^2\)</span>)</li>
+<li>Homocedasticidade <span class="math inline">\(\text{(}\sigma_1^2=\sigma_2^2=\cdots=\sigma_k^2\text{)}\)</span></li>
 </ul>
 <p><br></p>
 <p><strong>Problema da heterogeneidade:</strong></p>
@@ -229,27 +228,33 @@ q=\frac{|\bar{x}_i-\bar{x}_j|}
 </section>
 <section id="a-anova-de-welch" class="slide level2">
 <h2><strong>2. A ANOVA de Welch</strong></h2>
-<p>A ANOVA de Welch é uma versão robusta da ANOVA clássica, desenvolvida para lidar com heterocedasticidade.</p>
-<h3 id="ideia-central">Ideia central</h3>
-<p>Em vez de assumir variância igual entre grupos, o método atribui <strong>pesos diferentes</strong>, reduzindo a influência de grupos mais instáveis.</p>
-<p>! colocar mais explicado sobre a diferença das variâncias e diferenças dos n !</p>
-<h3 id="peso-de-cada-grupo">Peso de cada grupo:</h3>
+<p><br></p>
+<ul>
+<li><p>Utilizada quando as variâncias são diferentes e n diferentes</p></li>
+<li><p>Usa pesos baseados nas variâncias dos grupos</p></li>
+<li><p>Grupos com maior variância recebem menor peso</p></li>
+<li><p>Reduz o impacto de variâncias desiguais</p></li>
+</ul>
+<p><br></p>
+<p>Média Ponderada:</p>
+<p><br></p>
 <p><span class="math display">\[
-w_i=\frac{n_i}{s_i^2}
-\]</span></p>
-<p>➡ grupos mais variáveis recebem menor peso.</p>
-<h3 id="média-ponderada">Média ponderada:</h3>
-<p><span class="math display">\[
+\large
 \bar{x}_w=
 \frac{\sum_{i=1}^{k} w_i \bar{x}_i}
 {\sum_{i=1}^{k} w_i}
+\]</span> onde:</p>
+<p><br></p>
+<p><span class="math display">\[
+w_i=\frac{n_i}{s_i^2}
 \]</span></p>
 </section>
 <section class="slide level2">
 
-<h3 id="estatística-de-welch">Estatística de Welch:</h3>
-<p>A estatística ajusta a variabilidade entre grupos considerando os pesos:</p>
+<h3 id="estatística-de-teste">2.1. Estatística de Teste</h3>
+<p><br> <br></p>
 <p><span class="math display">\[
+\large
 F_W=
 \frac{
 \sum_{i=1}^{k} w_i(\bar{x}_i-\bar{x}_w)^2/(k-1)
@@ -260,7 +265,9 @@ F_W=
 \left(1-\frac{w_i}{\sum w_i}\right)^2
 }
 \]</span></p>
-<h3 id="graus-de-liberdade-ajustados">Graus de liberdade ajustados:</h3>
+<p><br> <br></p>
+<p>Os graus de liberdade são corrigidos usando a aproximação de Welch-Satterthwaite:</p>
+<p><br></p>
 <p><span class="math display">\[
 \nu=
 \frac{k^2-1}
@@ -268,32 +275,33 @@ F_W=
 \frac{1}{n_i-1}
 \left(1-\frac{w_i}{\sum w_i}\right)^2}
 \]</span></p>
-<h3 id="interpretação">Interpretação:</h3>
-<p>A principal mudança é que:</p>
-<ul>
-<li>grupos mais estáveis influenciam mais o resultado<br>
-</li>
-<li>grupos instáveis têm impacto reduzido<br>
-</li>
-<li>o teste se torna robusto à heterocedasticidade</li>
-</ul>
-<p>! melhorar isso !</p>
 </section>
-<section id="o-teste-de-games-howell" class="slide level2 scrollable">
+<section id="o-teste-de-games-howell" class="slide level2">
 <h2><strong>3. O teste de Games-Howell</strong></h2>
-<p>O teste de Games–Howell é uma alternativa ao Tukey quando a suposição de variâncias iguais não é válida.</p>
-<h3 id="ideia-do-método">Ideia do método</h3>
-<p>Ele realiza comparações par a par utilizando a variância específica de cada grupo, ao invés de uma variância comum.</p>
+<p><br></p>
+<p>O teste de Games–Howell realiza comparações par a par utilizando a variância específica de cada grupo.</p>
+<p><br></p>
+<ul>
+<li><p>Não assume variâncias iguais</p></li>
+<li><p>Não exige tamanhos iguais</p></li>
+<li><p>Ajusta os graus de liberdade</p></li>
+<li><p>Controla melhor o erro do tipo I</p></li>
+</ul>
+<p><br></p>
 </section>
 <section class="slide level2">
 
-<h3 id="estatística">Estatística:</h3>
+<h3 id="estatística-de-teste-1">3.1. Estatística de Teste:</h3>
+<p><br></p>
 <p><span class="math display">\[
+\large
 q_{ij}=
 \frac{|\bar{x}_i-\bar{x}_j|}
 {\sqrt{\frac{s_i^2}{n_i}+\frac{s_j^2}{n_j}}}
 \]</span></p>
-<h3 id="graus-de-liberdade">Graus de liberdade:</h3>
+<p><br> <br></p>
+<p>Graus de liberdade:</p>
+<p><br></p>
 <p><span class="math display">\[
 \nu=
 \frac{
@@ -307,56 +315,62 @@ q_{ij}=
 </section>
 <section class="slide level2">
 
-<h3 id="comparação-com-tukey">Comparação com Tukey:</h3>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Tukey</th>
-<th>Games–Howell</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>variâncias iguais</td>
-<td>variâncias diferentes</td>
-</tr>
-<tr class="even">
-<td>amostras balanceadas</td>
-<td>amostras desbalanceadas</td>
-</tr>
-<tr class="odd">
-<td>menos robusto</td>
-<td>mais robusto</td>
-</tr>
-</tbody>
-</table>
-<h3 id="vantagem-principal">Vantagem principal:</h3>
-<p>O método não exige:</p>
-<p><span class="math display">\[
-\sigma_i^2=\sigma_j^2
-\]</span></p>
-<p>! acho legal criar uma tabela comparativa, talvez até em um novo capítulo antes de Referências !</p>
+<h3 id="resumo-comparativo"><strong>Resumo Comparativo</strong></h3>
+<p><br> <br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>ANOVA Clássica</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Variâncias iguais<br>
+</li>
+<li>Teste de Tukey<br>
+</li>
+<li>Menos robusta</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>ANOVA de Welch</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Variâncias diferentes<br>
+</li>
+<li>Teste de Games-Howell<br>
+</li>
+<li>Mais robusta<br>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="referências" class="slide level2">
 <h2><strong>4. Referências</strong></h2>
-<ul>
-<li><strong>Welch, B. L. (1951).</strong><br>
-On the comparison of several mean values. <em>Biometrika</em>, 38(3/4), 330–336.<br>
-→ Desenvolvido para permitir comparação de médias quando a suposição de variâncias iguais não é válida, tornando a ANOVA mais robusta em situações reais.</li>
-</ul>
-<p><br></p>
-<ul>
-<li><strong>Games, P. A., &amp; Howell, J. F. (1976).</strong><br>
-Pairwise multiple comparison procedures with unequal n’s and variances.<br>
-<em>Journal of Educational Statistics</em>, 1(2), 113–125.<br>
-→ Criado para corrigir limitações do teste de Tukey em cenários com variâncias desiguais e amostras desbalanceadas.</li>
-</ul>
-<p><br></p>
-<ul>
-<li><strong>Montgomery, D. C. (2019).</strong><br>
-Design and Analysis of Experiments. Wiley.<br>
-→ Livro base da ANOVA clássica, estruturando a decomposição da variabilidade e os fundamentos da análise de experimentos.</li>
-</ul>
+<p><br> <br></p>
+<p><strong>Welch, B. L. (1951).</strong><br>
+On the comparison of several mean values. <em>Biometrika</em>, 38(3/4), 330–336.</p>
+<p><br> <br></p>
+<p><strong>Games, P. A., &amp; Howell, J. F. (1976).</strong></p>
+<p><br> <br></p>
+<p><strong>Montgomery, D. C. (2019).</strong><br>
+Design and Analysis of Experiments. Wiley.</p>
 </section>
 <section id="fim" class="title-slide slide level1 center" data-background-image="Capa.png" style="text-align:center">
 <h1><strong>FIM</strong></h1>
